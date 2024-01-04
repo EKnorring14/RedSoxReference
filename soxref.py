@@ -14,7 +14,7 @@ red_sox_info = {
 }
 
 # Sample data for Red Sox players
-red_sox_players = [
+red_sox_players_23 = [
     {"id": 1, "name": "Connor Wong", "position": ["Catcher"]},
     {"id": 2, "name": "Caleb Hamilton", "position": ["Catcher"]},
     {"id": 3, "name": "Jorge Alfaro", "position": ["Catcher"]},
@@ -81,13 +81,13 @@ top_players = [
     {"name": "Dwight Evans", "image_url": "/static/images/dwight_evans.jpg"},
     {"name": "Tris Speaker", "image_url": "/static/images/tris_speaker.jpg"},
     {"name": "Pedro Martinez", "image_url": "/static/images/pedro_martinez.jpg"},
-    {"name": "David Ortiz", "image_url": "/static/images/david_ortiz.jpg"},
+    {"name": "David Ortiz", "image_url": "/static/images/david_ortiz.jpg", "position": "Designated Hitter"},
     {"name": "Dustin Pedroia", "image_url": "/static/images/dustin_pedroia.jpg"},
     # Add more players as needed
 ]
 
 # A dictionary to store the correct answers (player names)
-correct_answers = {player['id']: player['name'] for player in red_sox_players}
+correct_answers = {player['id']: player['name'] for player in red_sox_players_23}
 
 @app.route('/')
 def team_home():
@@ -95,11 +95,11 @@ def team_home():
 
 @app.route('/players_list')
 def players_list():
-    return render_template('index.html', players=red_sox_players)
+    return render_template('index.html', players=red_sox_players_23)
 
 @app.route('/player/<int:player_id>')
 def player_detail(player_id):
-    player = next((p for p in red_sox_players if p["id"] == player_id), None)
+    player = next((p for p in red_sox_players_23 if p["id"] == player_id), None)
     if player:
         return render_template('player_detail.html', player=player)
     else:
@@ -109,13 +109,13 @@ def player_detail(player_id):
 def name_the_players():
     if request.method == 'POST':
         # Process user input and calculate the score
-        user_answers = {f'player_{player["id"]}': request.form[f'player_{player["id"]}'] for player in red_sox_players}
+        user_answers = {f'player_{player["id"]}': request.form[f'player_{player["id"]}'] for player in red_sox_players_23}
         score = sum(1 for user_answer in user_answers.values() if check_answer(user_answer))
         total_questions = len(correct_answers)
 
         return render_template('score.html', score=score, total=total_questions, correct_answers=correct_answers)
 
-    return render_template('name_the_players.html', players=red_sox_players)
+    return render_template('name_the_players.html', players=red_sox_players_23)
 
 def check_answer(user_answer):
     # Check if the user's answer matches any of the correct positions for any player
@@ -127,6 +127,18 @@ def check_answer(user_answer):
 @app.route('/sox_logs')
 def sox_logs():
     return render_template('sox_logs.html')
+
+@app.route('/search_results')
+def search_results():
+    search_query = request.args.get('search_query', '')
+
+    # Combine red_sox_players and top_players for searching
+    all_players = red_sox_players_23 + top_players
+
+    # Perform the search logic
+    search_results = [player for player in all_players if search_query.lower() in player['name'].lower()]
+
+    return render_template('search_results.html', search_results=search_results, search_query=search_query)
 
 if __name__ == '__main__':
     app.run(debug=True)

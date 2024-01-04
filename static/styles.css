@@ -54,3 +54,9 @@ ul.retired-numbers {
 ul.retired-numbers li {
     margin-bottom: 5px; /* Adjust the margin as needed */
 }
+
+.search-result-image {
+    width: 100px; /* Adjust the width as needed */
+    height: auto;
+    margin-right: 10px;
+}

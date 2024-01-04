@@ -51,6 +51,12 @@
     <p><a href="{{ url_for('name_the_players') }}">Play 2023 Red Sox Name Game</a></p>
     
 
+    <form action="{{ url_for('search_results') }}" method="GET">
+        <label for="search_query">Search Players (Currently Only Supports 2023 And Top 10 Players):</label>
+        <input type="text" id="search_query" name="search_query" placeholder="Enter player name">
+        <button type="submit">Search</button>
+    </form>
+
 
 
 
