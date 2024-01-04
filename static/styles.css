@@ -1,0 +1,29 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px;
+}
+
+h1 {
+    color: #d00; /* Red color for the team name */
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+a {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.retired-number {
+    color: red;
+}
+
+.retired-number-national {
+    color: blue;
+}

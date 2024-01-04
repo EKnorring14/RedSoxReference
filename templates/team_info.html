@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boston Red Sox Team History & Encyclopedia </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <img src="{{ url_for('static', filename='red_sox_logo.png') }}" alt="Red Sox Logo" style="width: 150px; height: auto; float: left; margin-right: 20px;">
+</head>
+<body>
+    <h1>Boston Red Sox Team History & Encyclopedia</h1>
+    
+    <p><b>Seasons:</b> {{ team_info['seasons'] }}</p>
+    <p style="margin-right: 20px;"><b>Record:</b> {{ team_info['record'] }}</p>
+    <p style="margin-left: 120px;"><b>Playoff Appearances:</b> {{ team_info['playoff_appearances'] }}</p>
+    <p style="margin-left: 170px;"><b>Pennants:</b> {{ team_info['pennants'] }}</p>
+    <p style="margin-left: 170px;"><b>Championships:</b> {{ team_info['world_series_wins'] }}</p>
+    <p style="margin-left: 170px;""><b>Home Ballpark:</b> {{ team_info['home_ballpark'] }}</p>
+    
+     <!-- Retired Numbers Section -->
+     <h2>Retired Numbers</h2>
+     <ul>
+        <li><span class="retired-number">#1</span> - Bobby Doerr</li>
+         <li><span class="retired-number">#4</span> - Joe Cronin</li>
+         <li><span class="retired-number">#6</span> - Johnny Pesky</li>
+         <li><span class="retired-number">#8</span> - Carl Yastrzemski</li>
+         <li><span class="retired-number">#9</span> - Ted Williams</li>
+         <li><span class="retired-number">#14</span> - Jim Rice</li>
+         <li><span class="retired-number">#26</span> - Wade Boggs</li>
+         <li><span class="retired-number">#27</span> - Carlton Fisk</li>
+         <li><span class="retired-number">#34</span> - David Ortiz</li>
+         <li><span class="retired-number">#45</span> - Pedro Martinez</li>
+         <li><span class="retired-number-national">#42</span> - Jackie Robinson</li>
+     </ul>
+    
+    
+    
+    
+    <!-- Link to the list of players -->
+    <p><a href="{{ url_for('players_list') }}">View 2023 Red Sox Players</a></p>
+    <p><a href="{{ url_for('name_the_players') }}">Play 2023 Red Sox Name Game</a></p>
+    
+
+
+
+
+
+</body>
+</html>
