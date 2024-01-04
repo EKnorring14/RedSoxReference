@@ -72,12 +72,26 @@ red_sox_players = [
     {"id": 55, "name": "Brennan Bernardino", "position": ["Relief Pitcher"]},
 ]
 
+top_players = [
+    {"name": "Ted Williams", "image_url": "/static/images/ted_williams.jpg"},
+    {"name": "Carl Yastrzemski", "image_url": "/static/images/carl_yastrzemski.jpg"},
+    {"name": "Roger Clemens", "image_url": "/static/images/roger_clemens.jpg"},
+    {"name": "Wade Boggs", "image_url": "/static/images/wade_boggs.jpg"},
+    {"name": "Cy Young", "image_url": "/static/images/cy_young.jpg"},
+    {"name": "Dwight Evans", "image_url": "/static/images/dwight_evans.jpg"},
+    {"name": "Tris Speaker", "image_url": "/static/images/tris_speaker.jpg"},
+    {"name": "Pedro Martinez", "image_url": "/static/images/pedro_martinez.jpg"},
+    {"name": "David Ortiz", "image_url": "/static/images/david_ortiz.jpg"},
+    {"name": "Dustin Pedroia", "image_url": "/static/images/dustin_pedroia.jpg"},
+    # Add more players as needed
+]
+
 # A dictionary to store the correct answers (player names)
 correct_answers = {player['id']: player['name'] for player in red_sox_players}
 
 @app.route('/')
 def team_home():
-    return render_template('team_info.html', team_info=red_sox_info)
+    return render_template('team_info.html', team_info=red_sox_info, top_players=top_players)
 
 @app.route('/players_list')
 def players_list():
@@ -109,6 +123,10 @@ def check_answer(user_answer):
         if any(position.lower() == user_answer.lower() for position in correct_positions):
             return False
     return True
+
+@app.route('/sox_logs')
+def sox_logs():
+    return render_template('sox_logs.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

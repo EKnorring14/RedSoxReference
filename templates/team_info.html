@@ -33,12 +33,21 @@
          <li><span class="retired-number">#45</span> - Pedro Martinez</li>
          <li><span class="retired-number-national">#42</span> - Jackie Robinson</li>
      </ul>
-    
+
+     <h2>Top 10 All Time Players</h2>
+     <ul class="top-players">
+         {% for player in top_players %}
+             <li>
+                 <img src="{{ player['image_url'] }}" alt="{{ player['name'] }} Image">
+                 <p>{{ player['name'] }}</p>
+             </li>
+         {% endfor %}
+     </ul>
     
     
     
     <!-- Link to the list of players -->
-    <p><a href="{{ url_for('players_list') }}">View 2023 Red Sox Players</a></p>
+    <p><a href="{{ url_for('sox_logs') }}">View 2023 Red Sox Logs</a></p>
     <p><a href="{{ url_for('name_the_players') }}">Play 2023 Red Sox Name Game</a></p>
     
 

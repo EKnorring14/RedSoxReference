@@ -27,3 +27,30 @@ a:hover {
 .retired-number-national {
     color: blue;
 }
+
+/* Styles for the top players list */
+ul.top-players {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.top-players li {
+    display: inline-block;
+    margin: 10px; /* Adjust the margin as needed */
+    text-align: center;
+}
+
+ul.top-players li img {
+    width: 150px; /* Adjust the image width as needed */
+    height: auto;
+}
+
+/* Styles for the retired numbers list */
+ul.retired-numbers {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.retired-numbers li {
+    margin-bottom: 5px; /* Adjust the margin as needed */
+}
